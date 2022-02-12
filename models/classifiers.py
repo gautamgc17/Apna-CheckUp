@@ -20,17 +20,11 @@ from tensorflow.keras.models import load_model , model_from_json
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.preprocessing.image import img_to_array , array_to_img , load_img
 
-# model1 = load_model("models/alzheimer-model.h5")
-# model2 = load_model("models/covid-model.h5")
-# model3 = load_model("models/malaria-model.h5")
-# model4 = load_model("models/brain_model.h5")
-# model5 = load_model("models/gl_model.h5")
-
-model1 = ""
-model2 = ""
-model3 = ""
-model4 = ""
-model5 = ""
+model1 = load_model("models/alzheimer-model.h5")
+model2 = load_model("models/covid-model.h5")
+model3 = load_model("models/malaria-model.h5")
+model4 = load_model("models/brain_model.h5")
+model5 = load_model("models/gl_model.h5")
 
 unet_model = DynamicUNet([16,32,64,128,256])
 unet_classifier = BrainTumorClassifier(unet_model,'cpu')
