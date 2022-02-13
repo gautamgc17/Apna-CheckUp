@@ -76,11 +76,14 @@ def liver(request):
 def liverPred(request):
     if request.method == 'POST':
         features = list(request.POST.dict().values())[1:]
+        out_features = request.POST.dict()
+        print(out_features)
         pred = predict_liverD(np.array([features]))
         context = {
-            'pred':pred
+            'pred':pred,
+            'out_features':out_features
         }
-        return render(request , 'liver/output.html' , context)
+        return render(request , 'liver/page2.html' , context)
     
     else:
         redirect('liver/')
@@ -236,6 +239,7 @@ def symptomsDis(request):
         text = get_text(file_path , file_name)
         out = re.findall("[a-zA-Z]+", text)
         advice, output = predict_disease(out)
+        print(advice , output)
         context = {
             "advice":advice,
             "output":output

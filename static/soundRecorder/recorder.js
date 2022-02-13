@@ -66,6 +66,7 @@ sendSymptoms.addEventListener('click', () => {
             accordionId.parentElement.style.display = 'block';
             advice.textContent = advice.textContent + response.data.advice;
             const output = response.data.output;
+            console.log(output)
             for (dis in output) {
                 const retElement = accordionMaker(dis, output[dis].desc, output[dis].prec)
                 document.getElementById("accordionExample").appendChild(retElement);
@@ -138,7 +139,13 @@ sendButton.addEventListener('click', () => {
         },
     })
         .then((response) => {
-            console.log(response);
+            accordionId.parentElement.style.display = 'block';
+            advice.textContent = advice.textContent + response.data.advice;
+            const output = response.data.output;
+            for (dis in output) {
+                const retElement = accordionMaker(dis, output[dis].desc, output[dis].prec)
+                document.getElementById("accordionExample").appendChild(retElement);
+            }
         })
         .then((error) => {
             console.log(error);

@@ -127,15 +127,15 @@ searchButton.addEventListener('click', () => {
 
 })
 function btnenable(event) {
-    console.log(event.target.parentElement.parentElement.nextElementSibling.childNodes[0].classList.remove('disabled'));
+    event.target.parentElement.parentElement.nextElementSibling.children[0].classList.remove('disabled');
 }
 function book(event) {
     let tabData = event.target.parentElement.parentElement.querySelectorAll('td');
     const datatoappend = ['Doctor Name: ', 'Specalist: ', 'Time Slot: '];
-    console.log(tabData[2].childNodes[0].querySelectorAll("input:checked")[0].value);
+    console.log(tabData[2].children[0].querySelectorAll("input:checked")[0].value);
     const modalBody = document.getElementById('modalBody').querySelectorAll('p');
     console.log();
-    if (tabData[2].childNodes[0].querySelectorAll('input')[0].checked) {
+    if (tabData[2].children[0].querySelectorAll('input')[0].checked) {
         console.log('inside right now', modalBody);
         document.querySelectorAll('.modal-footer')[0].classList.add('d-none');
         if (document.getElementById('modalBody').querySelector('div')) {
@@ -150,6 +150,14 @@ function book(event) {
         let loader = document.createElement('div');
         loader.classList.add('loader');
         document.getElementById('modalBody').appendChild(loader);
+        setTimeout(() => {
+            loader.classList.remove('loader');
+            document.getElementById('modalcross').click();
+            document.getElementById('videobtn').classList.remove('d-none');
+            alert('doctor accepted your request');
+
+        }, 2000)
+
 
     } else {
         document.querySelectorAll('.modal-footer')[0].classList.remove('d-none');
@@ -161,11 +169,16 @@ function book(event) {
         }
         document.getElementById('modalBody').querySelectorAll('p').forEach((element, index) => {
             if (index == 2) {
-                element.textContent = datatoappend[index] + tabData[index].childNodes[0].querySelectorAll("input:checked")[0].value;
+                element.textContent = datatoappend[index] + tabData[index].children[0].querySelectorAll("input:checked")[0].value;
             }
             else
                 element.textContent = datatoappend[index] + tabData[index].textContent;
 
+        })
+        let conbtn = document.getElementById('modalconfirm');
+        conbtn.addEventListener('click', () => {
+            document.getElementById('modalcross').click();
+            document.getElementById('meetingconfirm').click();
         })
     }
 
@@ -173,7 +186,6 @@ function book(event) {
 }
 function videoCall() {
     callFrame = window.DailyIframe.createFrame({
-
         iframeStyle: {
             position: "fixed",
             width: "40%",
@@ -189,6 +201,11 @@ function videoCall() {
     callFrame.join({
         url: "https://apnacheckup.daily.co/SVBqZbAE0tM8BaU9J4at",
     });
+    callFrame.on('left-meeting', (event) => {
+        document.getElementById('aftermeetingModal').click();
+        document.getElementById('videobtn').classList.add('d-none')
+
+    })
 }
 
 

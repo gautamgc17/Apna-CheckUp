@@ -4,14 +4,15 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Liver-form</title>
+    <title>Liver-Disease Prediction</title>
     <link rel="stylesheet" href="{% static 'liver/liver.css' %}" />
   </head>
   <body>
-    <h1>Liver Prediction</h1>
+    <h1>Liver-Disease Prediction</h1>
     <table>
-      <form id="myForm" method="post" action="{% url 'liver-predict' %}" >
-        {% csrf_token %}  
+      <form id="myForm"  action="{% url 'liver-predict' %}" method="post">
+        {% csrf_token %}
+
         <tr class="row">
           <td>
              <label for="age" class="title">Age:</label>
@@ -97,16 +98,22 @@
         </tr>
       </form>
     </table>
-  <input type="submit" class="butn" form="" value="Submit" onClick = "submit()"/>
+
+  <input type="submit" class="butn" id="sbmt" value="Submit" onclick = "submit()"/> 
   <input type="button" class="butn" value="Reset" onClick = "fun()"/>
-  <!--button type="button" class="btn btn-light" value="Submit">Submit</button-->
+    
   <script>
+      function fun(){
+          document.getElementById("myForm").reset();
+      }
       function submit(){
           document.getElementById("myForm").submit();
       }
-      function fun(){
-        document.getElementById("myForm").reset();
-      }
+      // function myFunction() {
+      //   document.getElementById("sbmt").onclick = function () {
+      //     location.href = "page2.html";
+      //   };
+      // }
   </script>
   </body>
 </html>
