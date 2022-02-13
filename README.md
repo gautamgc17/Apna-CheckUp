@@ -25,7 +25,7 @@ pip install virtualenv
 Create a new Virtual Environment for the project and activate it.
 
 ```
-virtualenv venv
+virtualenv env
 env\Scripts\activate
 ```
 Once the virtual environment is activated, the name of your virtual environment will appear on left side of terminal.
