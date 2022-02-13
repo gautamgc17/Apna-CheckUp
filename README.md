@@ -65,7 +65,7 @@ MY_REGION = ''
 BUCKET_NAME = ''
 ```
 
-**Step 6. Run Django File.**
+**Step 6. Run Django Project.**
 - Make Migrations
 ```
 python manage.py makemigrations
