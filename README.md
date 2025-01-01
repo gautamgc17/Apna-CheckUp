@@ -1,6 +1,6 @@
 # Project Name: Apna-CheckUp
 
-## Target Theme : Healthcare
+## Domain : Healthcare
 
 ## About the Project
 We have designed a CAD system/Disease Prediction system where users can get to know whether they are infected with a particular disease or not based on the input in the form of report or X-Ray/MRI Image.
